@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Dice Cricket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="I am, for the most part, a front-end web designer, looking to expand into the full-stack environment.">
+        <meta name="keywords" content="Dice, Cricket, Darts">
+        <meta name="author" content="Mitchell Naleid">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        
+    </head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Dice Cricket</h1>
+            <p>The goal of this game is to "close out" the numbers 15, 16, 17, 18, 19, 20, and bullseye.
+            You can accomplish this by hitting these numbers three times.</p>
+            <ul>
+                <li>Close out the numbers 15, 16, 17, 18, 19, 20, and bullseye(25).</li>
+                <li>If one player has already closed out a number, they will get points in the amount they roll, as long as the opposing player has NOT closed out the same number.</li>
+                <li>The first player to close out all numbers AND have the highest score wins.</li>
+                <li>If a value other than 15, 16, 17, 18, 19, 20, or bullseye(25) is rolled, no points will be given, and no numbers will close out. They are considered misses.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 id="player-one" class="text-center"></h2>
+            <div id="player-one-score"></div>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    15
+                    <span class="badge badge-primary badge-pill" id="playerOne15-one">Test</span>
+                    <span class="badge badge-primary badge-pill" id="playerOne15-two">Test</span>
+                    <span class="badge badge-primary badge-pill" id="playerOne15-three">Test</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    16
+                    <span class="badge badge-primary badge-pill" id="playerOne16-one">Test</span>
+                    <span class="badge badge-primary badge-pill" id="playerOne16-two">Test</span>
+                    <span class="badge badge-primary badge-pill" id="playerOne16-three">Test</span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h2 id="player-two" class="text-center"></h2>
+            <div id="player-two-score"></div>
+        </div>
+    </div>
+</div>
+
+<script src="js/dice-three-hundred.js"></script>
+</body>
+</html>
