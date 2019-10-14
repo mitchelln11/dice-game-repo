@@ -10,23 +10,69 @@
 // }
 // let secondPlayer = playerTwo ( prompt("Please Enter Name of Player Two") );
 
+//------SHOOTING FOR BULLSEYE------
+// let diceSixSideValues = [25,25,1,4,7,8];
+// let randomBull = [];
+// function rollBull(bullResult){
+//     for(let i = 0; i < bullResult.length; i++){
+//         randomBull = bullResult[Math.floor(Math.random() * bullResult.length )];
+//     }
+//     //console.log( randomBull  );
+//     if( randomBull == 25 ) {
+//         document.getElementById("playerOne25-one").classList.add("green-bg");
+//         document.getElementById("shot-message").innerHTML = randomBull + " Hit!";
+//     }
+//     else {
+//         document.getElementById("shot-message").innerHTML = randomBull + " Missed!";
+//     }
+// }
+// rollBull(diceSixSideValues);
 
-let diceSixSideValues = [25,25,1,4,7,8];
-let randomBull = [];
-function rollBull(bullResult){
-    for(let i = 0; i < bullResult.length; i++){
-        randomBull = bullResult[Math.floor(Math.random() * bullResult.length )];
+//------SHOOTING FOR 20------
+// let diceSevenSideValues = [20,20,1,5,18,5,12];
+// let randomTwenties = [];
+// function rollTwenty(twentyResult){
+//     for(let i = 0; i < twentyResult.length; i++){
+//         randomTwenties = twentyResult[Math.floor(Math.random() * twentyResult.length )];
+//     }
+//     //console.log( randomBull  );
+//     if( (randomTwenties == 20) ) {
+//         document.getElementById("playerOne20-one").classList.add("green-bg");
+//         document.getElementById("shot-message").innerHTML = randomTwenties + " Hit!";
+//     }
+//     else if (randomTwenties == 18) {
+//         document.getElementById("playerOne18-one").classList.add("green-bg");
+//         document.getElementById("shot-message").innerHTML = randomTwenties + " Hit!";
+//     }
+//     else {
+//         document.getElementById("shot-message").innerHTML = randomTwenties + " Missed!";
+//     }
+// }
+// rollTwenty(diceSevenSideValues);
+
+//------SHOOTING FOR 18------
+let diceEightSideValues = [18,4,1,20,13,18,6,5];
+let randomEighteen = [];
+function rollEighteen(eighteenResult){
+    for(let i = 0; i < eighteenResult.length; i++){
+        randomEighteen = eighteenResult[Math.floor(Math.random() * eighteenResult.length )];
     }
     //console.log( randomBull  );
-    if( randomBull == 25 ) {
-        document.getElementById("playerOne15-one").classList.add("green-bg");
-        document.getElementById("shot-message").innerHTML = randomBull + " Hit!";
+    if( (randomEighteen == 18) ) {
+        document.getElementById("playerOne18-one").classList.add("green-bg");
+        document.getElementById("shot-message").innerHTML = randomEighteen + " Hit!";
+    }
+    else if (randomEighteen == 20) {
+        document.getElementById("playerOne20-one").classList.add("green-bg");
+        document.getElementById("shot-message").innerHTML = randomEighteen + " Hit!";
     }
     else {
-        document.getElementById("shot-message").innerHTML = randomBull + " Missed!";
+        document.getElementById("shot-message").innerHTML = randomEighteen + " Missed!";
     }
 }
-rollBull(diceSixSideValues);
+rollEighteen(diceEightSideValues);
+//WORK YOUR WAY DOWN 18 IS DONE, STILL NEED 17, 16, 15
+//IMPLEMENT PLAYER 2 AND LIMIT DART THROWS
     
     
     // console.log(  Math.floor(Math.random(diceSixSideValues) * diceSixSideValues.length )  );
