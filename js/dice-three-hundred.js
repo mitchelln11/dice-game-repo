@@ -185,6 +185,8 @@ let diceElevenSideValues = [19,3,7,19,17,17,7,3,19,17,25];
 // rollDie();
 //document.getElementById("rollNineSeventeen").onclick = rollNineteenSeventeen();
 
+
+//-------------NINETEEN HITS AND POINTS---------------------------------------------
 function rollNineteenSeventeen(){
     let randomNineteenSeventeen;
     
@@ -195,7 +197,6 @@ function rollNineteenSeventeen(){
     if( (randomNineteenSeventeen == 19) ) {
         let nineteenFirstHitCheckPlayer1 = document.getElementById("playerOne19-one").classList.contains("green-bg");
         let nineteenSecondHitCheckPlayer1 = document.getElementById("playerOne19-two").classList.contains("green-bg");
-        //let nineteenThirdHitCheck = document.getElementById("playerOne19-three").classList.contains("green-bg");
         let nineteenFirstHitCheckPlayer2 = document.getElementById("playerTwo19-one").classList.contains("green-bg");
         let nineteenSecondHitCheckPlayer2 = document.getElementById("playerTwo19-two").classList.contains("green-bg");
         if(playerTurn == true) {
@@ -222,8 +223,18 @@ function rollNineteenSeventeen(){
         document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Hit!";
     }
     else if (randomNineteenSeventeen == 17) {
+        let seventeenFirstHitCheckPlayer1 = document.getElementById("playerOne17-one").classList.contains("green-bg");
+        let seventeenSecondHitCheckPlayer1 = document.getElementById("playerOne17-two").classList.contains("green-bg");
         if(playerTurn == true) {
-            document.getElementById("playerOne17-one").classList.add("green-bg");
+            if( (seventeenFirstHitCheckPlayer1 == true) && (seventeenSecondHitCheckPlayer1 == true)  ) {
+                document.getElementById("playerOne17-three").classList.add("green-bg");
+            }
+            else if ( seventeenFirstHitCheckPlayer1 == true ) {
+                document.getElementById("playerOne17-two").classList.add("green-bg");
+            }
+            else if ( seventeenFirstHitCheckPlayer1 == false ) {
+                document.getElementById("playerOne17-one").classList.add("green-bg");
+            }
         }
         else {
             document.getElementById("playerTwo17-one").classList.add("green-bg");
