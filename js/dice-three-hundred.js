@@ -10,7 +10,15 @@
 // }
 // let secondPlayer = playerTwo ( prompt("Please Enter Name of Player Two") );
 
-let playerTurn = false;
+function runGame () {
+    let playerTurn = true;
+    let turnCounter = 1;
+    let turnLimit = 3;
+    while ( turnCounter <= turnLimit) {
+
+    }
+}
+
 
 //------SHOOTING FOR BULLSEYE------
 // let diceSixSideValues = [25,25,1,4,7,8];
@@ -160,14 +168,33 @@ let playerTurn = false;
 
 //------SHOOTING FOR 17 or 19------
 let diceElevenSideValues = [19,3,7,19,17,17,7,3,19,17,25];
-let randomNineteenSeventeen = [];
-function rollNineteenSeventeen(NineteenSeventeenResult){
-    for(let i = 0; i < NineteenSeventeenResult.length; i++){
-        randomNineteenSeventeen = NineteenSeventeenResult[Math.floor(Math.random() * NineteenSeventeenResult.length )];
+//document.getElementById("rollNineSeventeen").onclick = rollNineteenSeventeen();
+
+function rollNineteenSeventeen(){
+    let randomNineteenSeventeen;
+    
+  
+    for(let i = 0; i < diceElevenSideValues.length; i++){
+        randomNineteenSeventeen = diceElevenSideValues[Math.floor(Math.random() * diceElevenSideValues.length )];
     }
+    //Nineteen Hit
     if( (randomNineteenSeventeen == 19) ) {
+        let nineteenFirstHitCheck = document.getElementById("playerOne19-one").classList.contains("green-bg");
+        let nineteenSecondHitCheck = document.getElementById("playerOne19-two").classList.contains("green-bg");
+        //let nineteenThirdHitCheck = document.getElementById("playerOne19-three").classList.contains("green-bg");
         if(playerTurn == true) {
-            document.getElementById("playerOne19-one").classList.add("green-bg");
+            if( nineteenFirstHitCheck == false ) {
+                document.getElementById("playerOne19-one").classList.add("green-bg");
+            }
+            else if ( nineteenFirstHitCheck == true ) {
+                document.getElementById("playerOne19-two").classList.add("green-bg");
+            }
+            else if ( nineteenSecondHitCheck == true ) {
+                document.getElementById("playerOne19-three").classList.add("green-bg");
+            }
+            else {
+                console.log("Are you getting 3 hits on the 19?");
+            }
         } 
         else {
             document.getElementById("playerTwo19-one").classList.add("green-bg");
@@ -196,6 +223,6 @@ function rollNineteenSeventeen(NineteenSeventeenResult){
         document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Missed!";
     }
 }
-rollNineteenSeventeen(diceElevenSideValues);
+//rollNineteenSeventeen(diceElevenSideValues);
 
 //IMPLEMENT PLAYER 2 AND LIMIT DART THROWS
