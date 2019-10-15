@@ -13,26 +13,26 @@
 let playerTurn = false;
 
 //------SHOOTING FOR BULLSEYE------
-let diceSixSideValues = [25,25,1,4,7,8];
-let randomBull = [];
-function rollBull(bullResult){
-    for(let i = 0; i < bullResult.length; i++){
-        randomBull = bullResult[Math.floor(Math.random() * bullResult.length )];
-    }
-    if( randomBull == 25 ) {
-        if(playerTurn == true) {
-            document.getElementById("playerOne25-one").classList.add("green-bg");
-        }
-        else {
-            document.getElementById("playerTwo25-one").classList.add("green-bg");
-        }
-        document.getElementById("shot-message").innerHTML = randomBull + " Hit!";
-    }
-    else {
-        document.getElementById("shot-message").innerHTML = randomBull + " Missed!";
-    }
-}
-rollBull(diceSixSideValues);
+// let diceSixSideValues = [25,25,1,4,7,8];
+// let randomBull = [];
+// function rollBull(bullResult){
+//     for(let i = 0; i < bullResult.length; i++){
+//         randomBull = bullResult[Math.floor(Math.random() * bullResult.length )];
+//     }
+//     if( randomBull == 25 ) {
+//         if(playerTurn == true) {
+//             document.getElementById("playerOne25-one").classList.add("green-bg");
+//         }
+//         else {
+//             document.getElementById("playerTwo25-one").classList.add("green-bg");
+//         }
+//         document.getElementById("shot-message").innerHTML = randomBull + " Hit!";
+//     }
+//     else {
+//         document.getElementById("shot-message").innerHTML = randomBull + " Missed!";
+//     }
+// }
+// rollBull(diceSixSideValues);
 
 //------SHOOTING FOR 20------
 // let diceSevenSideValues = [20,20,1,5,18,5,12];
@@ -42,11 +42,21 @@ rollBull(diceSixSideValues);
 //         randomTwenties = twentyResult[Math.floor(Math.random() * twentyResult.length )];
 //     }
 //     if( (randomTwenties == 20) ) {
-//         document.getElementById("playerOne20-one").classList.add("green-bg");
+//         if(playerTurn == true) {
+//             document.getElementById("playerOne20-one").classList.add("green-bg");
+//         }
+//         else {
+//             document.getElementById("playerTwo20-one").classList.add("green-bg");
+//         }
 //         document.getElementById("shot-message").innerHTML = randomTwenties + " Hit!";
 //     }
 //     else if (randomTwenties == 18) {
-//         document.getElementById("playerOne18-one").classList.add("green-bg");
+//         if(playerTurn == true) {
+//             document.getElementById("playerOne18-one").classList.add("green-bg");
+//         }
+//         else {
+//             document.getElementById("playerTwo18-one").classList.add("green-bg");
+//         }
 //         document.getElementById("shot-message").innerHTML = randomTwenties + " Hit!";
 //     }
 //     else {
@@ -63,11 +73,21 @@ rollBull(diceSixSideValues);
 //         randomEighteen = eighteenResult[Math.floor(Math.random() * eighteenResult.length )];
 //     }
 //     if( (randomEighteen == 18) ) {
-//         document.getElementById("playerOne18-one").classList.add("green-bg");
+//         if(playerTurn == true) {
+//             document.getElementById("playerOne18-one").classList.add("green-bg");
+//         }
+//         else {
+//             document.getElementById("playerTwo18-one").classList.add("green-bg");
+//         }
 //         document.getElementById("shot-message").innerHTML = randomEighteen + " Hit!";
 //     }
 //     else if (randomEighteen == 20) {
-//         document.getElementById("playerOne20-one").classList.add("green-bg");
+//         if(playerTurn == true) {
+//             document.getElementById("playerOne20-one").classList.add("green-bg");
+//         }
+//         else {
+//             document.getElementById("playerTwo20-one").classList.add("green-bg");
+//         }
 //         document.getElementById("shot-message").innerHTML = randomEighteen + " Hit!";
 //     }
 //     else {
@@ -84,11 +104,21 @@ rollBull(diceSixSideValues);
 //         randomSixteen = sixteenResult[Math.floor(Math.random() * sixteenResult.length )];
 //     }
 //     if( (randomSixteen == 16) ) {
-//         document.getElementById("playerOne16-one").classList.add("green-bg");
+//         if(playerTurn == true) {
+//             document.getElementById("playerOne16-one").classList.add("green-bg");
+//         }
+//         else {
+//             document.getElementById("playerTwo16-one").classList.add("green-bg");
+//         }
 //         document.getElementById("shot-message").innerHTML = randomSixteen + " Hit!";
 //     }
 //     else if (randomSixteen == 19) {
-//         document.getElementById("playerOne19-one").classList.add("green-bg");
+//         if(playerTurn == true) {
+//             document.getElementById("playerOne19-one").classList.add("green-bg");
+//         }
+//         else {
+//             document.getElementById("playerTwo19-one").classList.add("green-bg");
+//         }
 //         document.getElementById("shot-message").innerHTML = randomSixteen + " Hit!";
 //     }
 //     else {
@@ -105,11 +135,21 @@ rollBull(diceSixSideValues);
 //         randomFifteen = fifteenResult[Math.floor(Math.random() * fifteenResult.length )];
 //     }
 //     if( (randomFifteen == 15) ) {
-//         document.getElementById("playerOne15-one").classList.add("green-bg");
+//         if(playerTurn == true) {
+//             document.getElementById("playerOne15-one").classList.add("green-bg");
+//         }
+//         else {
+//             document.getElementById("playerTwo15-one").classList.add("green-bg");
+//         }
 //         document.getElementById("shot-message").innerHTML = randomFifteen + " Hit!";
 //     }
 //     else if (randomFifteen == 17) {
-//         document.getElementById("playerOne17-one").classList.add("green-bg");
+//         if(playerTurn == true) {
+//             document.getElementById("playerOne17-one").classList.add("green-bg");
+//         }
+//         else {
+//             document.getElementById("playerTwo17-one").classList.add("green-bg");
+//         }
 //         document.getElementById("shot-message").innerHTML = randomFifteen + " Hit!";
 //     }
 //     else {
@@ -119,47 +159,43 @@ rollBull(diceSixSideValues);
 // rollFifteen(diceTenSideValues);
 
 //------SHOOTING FOR 17 or 19------
-// let diceElevenSideValues = [19,3,7,19,17,17,7,3,19,17,25];
-// let randomNineteenSeventeen = [];
-// function rollNineteenSeventeen(NineteenSeventeenResult){
-//     for(let i = 0; i < NineteenSeventeenResult.length; i++){
-//         randomNineteenSeventeen = NineteenSeventeenResult[Math.floor(Math.random() * NineteenSeventeenResult.length )];
-//     }
-//     if( (randomNineteenSeventeen == 19) ) {
-//         document.getElementById("playerOne19-one").classList.add("green-bg");
-//         document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Hit!";
-//     }
-//     else if (randomNineteenSeventeen == 17) {
-//         document.getElementById("playerOne17-one").classList.add("green-bg");
-//         document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Hit!";
-//     }
-//     else if (randomNineteenSeventeen == 25) {
-//         document.getElementById("playerOne25-one").classList.add("green-bg");
-//         document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Bullseye!";
-//     }
-//     else {
-//         document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Missed!";
-//     }
-// }
-// rollNineteenSeventeen(diceElevenSideValues);
+let diceElevenSideValues = [19,3,7,19,17,17,7,3,19,17,25];
+let randomNineteenSeventeen = [];
+function rollNineteenSeventeen(NineteenSeventeenResult){
+    for(let i = 0; i < NineteenSeventeenResult.length; i++){
+        randomNineteenSeventeen = NineteenSeventeenResult[Math.floor(Math.random() * NineteenSeventeenResult.length )];
+    }
+    if( (randomNineteenSeventeen == 19) ) {
+        if(playerTurn == true) {
+            document.getElementById("playerOne19-one").classList.add("green-bg");
+        } 
+        else {
+            document.getElementById("playerTwo19-one").classList.add("green-bg");
+        } 
+        document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Hit!";
+    }
+    else if (randomNineteenSeventeen == 17) {
+        if(playerTurn == true) {
+            document.getElementById("playerOne17-one").classList.add("green-bg");
+        }
+        else {
+            document.getElementById("playerTwo17-one").classList.add("green-bg");
+        }
+        document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Hit!";
+    }
+    else if (randomNineteenSeventeen == 25) {
+        if(playerTurn == true) {
+            document.getElementById("playerOne25-one").classList.add("green-bg");
+        }
+        else {
+            document.getElementById("playerTwo25-one").classList.add("green-bg");
+        }
+        document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Bullseye!";
+    }
+    else {
+        document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Missed!";
+    }
+}
+rollNineteenSeventeen(diceElevenSideValues);
 
 //IMPLEMENT PLAYER 2 AND LIMIT DART THROWS
-    
-    
-    // console.log(  Math.floor(Math.random(diceSixSideValues) * diceSixSideValues.length )  );
-    // let diceSevenSideValues = [];
-    // let diceEightSideValues = [];
-    // let diceNineSideValues = [];
-    // let diceTenSideValues = [];
-    // let diceElevenSideValues = [];
-    // let bullResult = diceSixSideValues[Math.floor(Math.random() * diceSixSideValues.length)];
-    // let test = diceSixSideValues[1];
-    // console.log( test );
-//     console.log(test);
-
-
-
-// let origWord = rollBull("hello");
-// console.log(origWord);
-
-// console.log("Hello");
