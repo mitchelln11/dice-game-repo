@@ -10,10 +10,17 @@
 // }
 // let secondPlayer = playerTwo ( prompt("Please Enter Name of Player Two") );
 
-    let playerTurn = false;
+    let playerTurn = true;
     let turnCounter = 1;
     let turnLimit = 3;
     let bullClick = document.getElementById("rollBullseye");
+
+    for ( rolls=0; rolls < 3; rolls++ ) {
+        if (rolls <= 3) {
+            playerTurn = True;
+            alert(playerTwoName + "'s Turn");
+        }
+    }
     //console.log( bullClick + "Clicks");
 
     // function rollsCount(rollNumber) {
@@ -25,12 +32,9 @@
     //     }
     // }
 
-
-
-//------SHOOTING FOR BULLSEYE------
-let diceSixSideValues = [25,25,1,4,7,8];
 //-------------BULLSEYE HITS AND POINTS---------------------------------------------
 function rollBull(){
+    let diceSixSideValues = [25,25,1,4,7,8];
     let randomBull;
     for(let i = 0; i < diceSixSideValues.length; i++){
         randomBull = diceSixSideValues[Math.floor(Math.random() * diceSixSideValues.length )];
@@ -44,10 +48,9 @@ function rollBull(){
     }
 }
 
-//------SHOOTING FOR 20------
-let diceSevenSideValues = [20,20,1,5,18,5,12];
 //-------------TWENTYIES HITS AND POINTS---------------------------------------------
 function rollTwenty(){
+    let diceSevenSideValues = [20,20,1,5,18,5,12];
     let randomTwenties;
     for(let i = 0; i < diceSevenSideValues.length; i++){
         randomTwenties = diceSevenSideValues[Math.floor(Math.random() * diceSevenSideValues.length )];
@@ -65,10 +68,9 @@ function rollTwenty(){
     }
 }
 
-
-let diceEightSideValues = [18,4,1,20,13,18,6,5];
 //-------------EIGHTEEN HITS AND POINTS---------------------------------------------
 function rollEighteen(){
+    let diceEightSideValues = [18,4,1,20,13,18,6,5];
     let randomEighteen;
     for(let i = 0; i < diceEightSideValues.length; i++){
         randomEighteen = diceEightSideValues[Math.floor(Math.random() * diceEightSideValues.length )];
@@ -87,9 +89,10 @@ function rollEighteen(){
 }
 
 
-let diceNineSideValues = [16,8,11,7,16,19,3,8,16];
+
 //-------------SIXTEEN HITS AND POINTS---------------------------------------------
 function rollSixteen(){
+    let diceNineSideValues = [16,8,11,7,16,19,3,8,16];
     let randomSixteen;
     for(let i = 0; i < diceNineSideValues.length; i++){
         randomSixteen = diceNineSideValues[Math.floor(Math.random() * diceNineSideValues.length )];
@@ -107,12 +110,10 @@ function rollSixteen(){
     }
 }
 
-
-let diceTenSideValues = [15,10,2,6,17,15,15,17,10,2];
 //-------------FIFTEEN HITS AND POINTS---------------------------------------------
 function rollFifteen(){
+    let diceTenSideValues = [15,10,2,6,17,15,15,17,10,2];
     let randomFifteen;
-
     for(let i = 0; i < diceTenSideValues.length; i++){
         randomFifteen = diceTenSideValues[Math.floor(Math.random() * diceTenSideValues.length )];
     }
@@ -129,14 +130,10 @@ function rollFifteen(){
     }
 }
 
-
-//------SHOOTING FOR 17 or 19------
-let diceElevenSideValues = [19,3,7,19,17,17,7,3,19,17,25];
-
 //-------------NINETEEN AND SEVENTEEN HITS AND POINTS---------------------------------------------
 function rollNineteenSeventeen(){
+    let diceElevenSideValues = [19,3,7,19,17,17,7,3,19,17,25];
     let randomNineteenSeventeen;
-    
     for(let i = 0; i < diceElevenSideValues.length; i++){
         randomNineteenSeventeen = diceElevenSideValues[Math.floor(Math.random() * diceElevenSideValues.length )];
     }
@@ -158,8 +155,39 @@ function rollNineteenSeventeen(){
     }
 }
 
-//IMPLEMENT PLAYER 2 AND LIMIT DART THROWS
+//LIMIT DART THROWS
 
+//-------------------------BULLSEYE HIT, RE-USE WHEN NEEDED----------------------
+function hitBullseye() {
+    let seventeenFirstHitCheckPlayer1 = document.getElementById("playerOne25-one").classList.contains("green-bg");
+    let seventeenSecondHitCheckPlayer1 = document.getElementById("playerOne25-two").classList.contains("green-bg");
+    let seventeenFirstHitCheckPlayer2 = document.getElementById("playerTwo25-one").classList.contains("green-bg");
+    let seventeenSecondHitCheckPlayer2 = document.getElementById("playerTwo25-two").classList.contains("green-bg");
+    if(playerTurn == true) {
+        if( (seventeenFirstHitCheckPlayer1 == true) && (seventeenSecondHitCheckPlayer1 == true)  ) {
+            document.getElementById("playerOne25-three").classList.add("green-bg");
+        }
+        else if ( seventeenFirstHitCheckPlayer1 == true ) {
+            document.getElementById("playerOne25-two").classList.add("green-bg");
+        }
+        else if ( seventeenFirstHitCheckPlayer1 == false ) {
+            document.getElementById("playerOne25-one").classList.add("green-bg");
+        }
+    }
+    else {
+        //Player 2 Hits
+        if ( (seventeenFirstHitCheckPlayer2 == true) && (seventeenSecondHitCheckPlayer2 == true) ) {
+            document.getElementById("playerTwo25-three").classList.add("green-bg");
+        }
+        else if ( seventeenFirstHitCheckPlayer2 == true ) {
+            document.getElementById("playerTwo25-two").classList.add("green-bg");
+        }
+        else if ( seventeenFirstHitCheckPlayer2 == false ) {
+            document.getElementById("playerTwo25-one").classList.add("green-bg");
+        }
+    }
+    
+}
 
 //-------------------------TWENTY HIT, RE-USE WHEN NEEDED----------------------
 function hitTwenty() {
@@ -289,23 +317,23 @@ function hitSeventeen() {
 //-------------------------SIXTEEN HIT, RE-USE WHEN NEEDED----------------------
 function hitSixteen() {
     let sixteenFirstHitCheckPlayer1 = document.getElementById("playerOne16-one").classList.contains("green-bg");
-    let sixteenteenSecondHitCheckPlayer1 = document.getElementById("playerOne16-two").classList.contains("green-bg");
-    let sixteenteenFirstHitCheckPlayer2 = document.getElementById("playerTwo16-one").classList.contains("green-bg");
-    let sixteenteenSecondHitCheckPlayer2 = document.getElementById("playerTwo16-two").classList.contains("green-bg");
+    let sixteenSecondHitCheckPlayer1 = document.getElementById("playerOne16-two").classList.contains("green-bg");
+    let sixteenFirstHitCheckPlayer2 = document.getElementById("playerTwo16-one").classList.contains("green-bg");
+    let sixteenSecondHitCheckPlayer2 = document.getElementById("playerTwo16-two").classList.contains("green-bg");
     if(playerTurn == true) {
-        if( (sixteenFirstHitCheckPlayer1 == true) && (fifteenteenSecondHitCheckPlayer1 == true)  ) {
+        if( (sixteenFirstHitCheckPlayer1 == true) && (sixteenSecondHitCheckPlayer1 == true)  ) {
             document.getElementById("playerOne16-three").classList.add("green-bg");
         }
-        else if ( sixteenteenFirstHitCheckPlayer1 == true ) {
+        else if ( sixteenFirstHitCheckPlayer1 == true ) {
             document.getElementById("playerOne16-two").classList.add("green-bg");
         }
-        else if ( sixteenteenFirstHitCheckPlayer1 == false ) {
+        else if ( sixteenFirstHitCheckPlayer1 == false ) {
             document.getElementById("playerOne16-one").classList.add("green-bg");
         }
     }
     else {
         //Player 2 Hits
-        if ( (sixteenteenFirstHitCheckPlayer2 == true) && (sixteenteenSecondHitCheckPlayer2 == true) ) {
+        if ( (sixteenFirstHitCheckPlayer2 == true) && (sixteenSecondHitCheckPlayer2 == true) ) {
             document.getElementById("playerTwo16-three").classList.add("green-bg");
         }
         else if ( sixteenteenFirstHitCheckPlayer2 == true ) {
@@ -320,11 +348,11 @@ function hitSixteen() {
 //-------------------------FIFTEEN HIT, RE-USE WHEN NEEDED----------------------
 function hitFifteen() {
     let fifteenFirstHitCheckPlayer1 = document.getElementById("playerOne15-one").classList.contains("green-bg");
-    let fifteenteenSecondHitCheckPlayer1 = document.getElementById("playerOne15-two").classList.contains("green-bg");
-    let fifteenteenFirstHitCheckPlayer2 = document.getElementById("playerTwo15-one").classList.contains("green-bg");
-    let fifteenteenSecondHitCheckPlayer2 = document.getElementById("playerTwo15-two").classList.contains("green-bg");
+    let fifteenSecondHitCheckPlayer1 = document.getElementById("playerOne15-two").classList.contains("green-bg");
+    let fifteenFirstHitCheckPlayer2 = document.getElementById("playerTwo15-one").classList.contains("green-bg");
+    let fifteenSecondHitCheckPlayer2 = document.getElementById("playerTwo15-two").classList.contains("green-bg");
     if(playerTurn == true) {
-        if( (fifteenFirstHitCheckPlayer1 == true) && (fifteenteenSecondHitCheckPlayer1 == true)  ) {
+        if( (fifteenFirstHitCheckPlayer1 == true) && (fifteenSecondHitCheckPlayer1 == true)  ) {
             document.getElementById("playerOne15-three").classList.add("green-bg");
         }
         else if ( fifteenteenFirstHitCheckPlayer1 == true ) {
@@ -336,46 +364,14 @@ function hitFifteen() {
     }
     else {
         //Player 2 Hits
-        if ( (fifteenteenFirstHitCheckPlayer2 == true) && (fifteenteenSecondHitCheckPlayer2 == true) ) {
+        if ( (fifteenFirstHitCheckPlayer2 == true) && (fifteenSecondHitCheckPlayer2 == true) ) {
             document.getElementById("playerTwo15-three").classList.add("green-bg");
         }
-        else if ( fifteenteenFirstHitCheckPlayer2 == true ) {
+        else if ( fifteenFirstHitCheckPlayer2 == true ) {
             document.getElementById("playerTwo15-two").classList.add("green-bg");
         }
-        else if ( fifteenteenFirstHitCheckPlayer2 == false ) {
+        else if ( fifteenFirstHitCheckPlayer2 == false ) {
             document.getElementById("playerTwo15-one").classList.add("green-bg");
         }
     }
-}
-
-//-------------------------BULLSEYE HIT, RE-USE WHEN NEEDED----------------------
-function hitBullseye() {
-    let seventeenFirstHitCheckPlayer1 = document.getElementById("playerOne25-one").classList.contains("green-bg");
-    let seventeenSecondHitCheckPlayer1 = document.getElementById("playerOne25-two").classList.contains("green-bg");
-    let seventeenFirstHitCheckPlayer2 = document.getElementById("playerTwo25-one").classList.contains("green-bg");
-    let seventeenSecondHitCheckPlayer2 = document.getElementById("playerTwo25-two").classList.contains("green-bg");
-    if(playerTurn == true) {
-        if( (seventeenFirstHitCheckPlayer1 == true) && (seventeenSecondHitCheckPlayer1 == true)  ) {
-            document.getElementById("playerOne25-three").classList.add("green-bg");
-        }
-        else if ( seventeenFirstHitCheckPlayer1 == true ) {
-            document.getElementById("playerOne25-two").classList.add("green-bg");
-        }
-        else if ( seventeenFirstHitCheckPlayer1 == false ) {
-            document.getElementById("playerOne25-one").classList.add("green-bg");
-        }
-    }
-    else {
-        //Player 2 Hits
-        if ( (seventeenFirstHitCheckPlayer2 == true) && (seventeenSecondHitCheckPlayer2 == true) ) {
-            document.getElementById("playerTwo25-three").classList.add("green-bg");
-        }
-        else if ( seventeenFirstHitCheckPlayer2 == true ) {
-            document.getElementById("playerTwo25-two").classList.add("green-bg");
-        }
-        else if ( seventeenFirstHitCheckPlayer2 == false ) {
-            document.getElementById("playerTwo25-one").classList.add("green-bg");
-        }
-    }
-    
 }
