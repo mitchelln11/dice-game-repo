@@ -15,12 +15,12 @@
     let turnLimit = 3;
     let bullClick = document.getElementById("rollBullseye");
 
-    for ( rolls=0; rolls < 3; rolls++ ) {
-        if (rolls <= 3) {
-            playerTurn = True;
-            alert(playerTwoName + "'s Turn");
-        }
-    }
+    // for ( rolls=0; rolls < 3; rolls++ ) {
+    //     if (rolls <= 3) {
+    //         playerTurn = True;
+    //         alert(playerTwoName + "'s Turn");
+    //     }
+    // }
     //console.log( bullClick + "Clicks");
 
     // function rollsCount(rollNumber) {
@@ -355,10 +355,10 @@ function hitFifteen() {
         if( (fifteenFirstHitCheckPlayer1 == true) && (fifteenSecondHitCheckPlayer1 == true)  ) {
             document.getElementById("playerOne15-three").classList.add("green-bg");
         }
-        else if ( fifteenteenFirstHitCheckPlayer1 == true ) {
+        else if ( fifteenFirstHitCheckPlayer1 == true ) {
             document.getElementById("playerOne15-two").classList.add("green-bg");
         }
-        else if ( fifteenteenFirstHitCheckPlayer1 == false ) {
+        else if ( fifteenFirstHitCheckPlayer1 == false ) {
             document.getElementById("playerOne15-one").classList.add("green-bg");
         }
     }
