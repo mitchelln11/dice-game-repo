@@ -10,28 +10,23 @@
 // }
 // let secondPlayer = playerTwo ( prompt("Please Enter Name of Player Two") );
 
-    let playerTurn = true;
-    let turnCounter = 1;
-    let turnLimit = 3;
-    let bullClick = document.getElementById("rollBullseye");
+    let playerTurn = true;//Keep open so hits work
+    
 
-    // for ( rolls=0; rolls < 3; rolls++ ) {
-    //     if (rolls <= 3) {
-    //         playerTurn = True;
-    //         alert(playerTwoName + "'s Turn");
-    //     }
-    // }
-    //console.log( bullClick + "Clicks");
+    function trackClicks() {
+        let turnCounter = 0;
+        let turnLimit = 3;
+        let buttonCollect = [].slice.call(document.getElementsByClassName("btn-success"));//Create array of buttons
 
-    // function rollsCount(rollNumber) {
-    //     for ( rolls=0; rolls < rollNumber.length; rolls++ ) {
-    //         turnCounter++
-    //         if ( turnCounter <= ) {
-    //             console.log("Hello");
-    //         }
-    //     }
-    // }
+        buttonCollect.forEach(function (btnClick, index){
+        btnClick.addEventListener("click", function(){
+            turnCounter++;
+            console.log(turnCounter);
+        });
+      });
+    }
 
+    trackClicks();
 //-------------BULLSEYE HITS AND POINTS---------------------------------------------
 function rollBull(){
     let diceSixSideValues = [25,25,1,4,7,8];

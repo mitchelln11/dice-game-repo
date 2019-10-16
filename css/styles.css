@@ -36,6 +36,10 @@ h2 {
     font-size: 24px;
 }
 
+.scoreboard-container {
+    padding: 15px 15px 25px;
+}
+
 .green-bg {
     background: #4A7B42;
 }
