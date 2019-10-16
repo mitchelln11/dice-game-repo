@@ -30,7 +30,6 @@ function trackClicks() {
                 turnCounter = 0;//reset counter to 0
                 currentPlayer();
             }
-            console.log(playerTurn);
             declareVictor ();
         });
     });
@@ -40,12 +39,12 @@ trackClicks();
 //-------------FRONT-END CURRENT PLAYER INDICATOR---------------------------------------------
 function currentPlayer () {
     if (playerTurn == false) {
-        document.getElementById("player-one-scoreboard").classList.remove("green-bg");
-        document.getElementById("player-two-scoreboard").classList.add("green-bg");
+        document.getElementById("player-one-scoreboard").classList.remove("activeScoreboard");
+        document.getElementById("player-two-scoreboard").classList.add("activeScoreboard");
     }
     else if (playerTurn == true) {
-        document.getElementById("player-two-scoreboard").classList.remove("green-bg");
-        document.getElementById("player-one-scoreboard").classList.add("green-bg");
+        document.getElementById("player-two-scoreboard").classList.remove("activeScoreboard");
+        document.getElementById("player-one-scoreboard").classList.add("activeScoreboard");
     }
 }
 currentPlayer();
@@ -59,12 +58,6 @@ function writeToMessageBox(x) {
 function genCellHit(cell) {
     document.getElementById(cell).classList.add("green-bg");
 }
-
-//-------------DISABLE BUTTONS AFTER WINNER DECLARED---------------------------------------------
-function disableBtns() {
-    document.getElementsByClassName("btn-success").disabled = true;
-}
-
 
 //-------------BULLSEYE HITS AND POINTS---------------------------------------------
 
@@ -415,6 +408,7 @@ function hitFifteen() {
     }
 }
 
+//-------------------------DECLARE VICTOR----------------------
 function declareVictor () {
     //Player One
     let bullThirdHitCheckPlayer1 = document.getElementById("playerOne25-three").classList.contains("green-bg");
