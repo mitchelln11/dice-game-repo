@@ -1,14 +1,14 @@
 //Get and post player one name
-function playerOne(playerOneName) {
-    document.getElementById("player-one").innerHTML = playerOneName;
-}
-let firstPlayer = playerOne ( prompt("Please Enter Name of Player One") );
+// function playerOne(playerOneName) {
+//     document.getElementById("player-one").innerHTML = playerOneName;
+// }
+// let firstPlayer = playerOne ( prompt("Please Enter Name of Player One") );
 
-//Get and post player two name
-function playerTwo(playerTwoName) {
-    document.getElementById("player-two").innerHTML = playerTwoName;
-}
-let secondPlayer = playerTwo ( prompt("Please Enter Name of Player Two") );
+// //Get and post player two name
+// function playerTwo(playerTwoName) {
+//     document.getElementById("player-two").innerHTML = playerTwoName;
+// }
+// let secondPlayer = playerTwo ( prompt("Please Enter Name of Player Two") );
 
 let playerTurn = true;//Keep open so hits work
  
@@ -17,7 +17,7 @@ function rollDie(n){
     return Math.floor(Math.random() * n);
 }
 
-//-------------TRACK BUTTON CLICKS---------------------------------------------
+//-------------TRACK AND LIMIT BUTTON CLICKS---------------------------------------------
 function trackClicks() {
     let turnCounter = 0;
     let buttonCollect = [].slice.call(document.getElementsByClassName("btn-success"));//Create array of buttons
@@ -27,6 +27,7 @@ function trackClicks() {
             if (turnCounter == 3) {
                 playerTurn = !playerTurn;
                 turnCounter = 0;//reset counter to 0
+                currentPlayer();
             }
             console.log(playerTurn);
         });
@@ -35,28 +36,27 @@ function trackClicks() {
 trackClicks();
 
 //-------------LIMIT DIE ROLLS---------------------------------------------
-function limiter () {
-    let turnLimit = 3;
-    for ( i=0; i < turnLimit; i++ ) {
-        if (turnCounter <= turnLimit) {
-            playerTurn = true;
-        }
-        else {
-            playerTurn = false;
-        }
-    }
-}
+// function limiter () {
+//     let turnLimit = 3;
+//     for ( i=0; i < turnLimit; i++ ) {
+//         if (turnCounter <= turnLimit) {
+//             playerTurn = true;
+//         }
+//         else {
+//             playerTurn = false;
+//         }
+//     }
+// }
 
 //-------------FRONT-END CURRENT PLAYER INDICATOR---------------------------------------------
 function currentPlayer () {
     if (playerTurn == false) {
+        document.getElementById("player-one-scoreboard").classList.remove("green-bg");
         document.getElementById("player-two-scoreboard").classList.add("green-bg");
-        
-        console.log("hello");
     }
     else if (playerTurn == true) {
+        document.getElementById("player-two-scoreboard").classList.remove("green-bg");
         document.getElementById("player-one-scoreboard").classList.add("green-bg");
-        console.log(playerTurn);
     }
 }
 currentPlayer();
