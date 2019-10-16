@@ -17,7 +17,6 @@
         let turnCounter = 0;
         let turnLimit = 3;
         let buttonCollect = [].slice.call(document.getElementsByClassName("btn-success"));//Create array of buttons
-
         buttonCollect.forEach(function (btnClick, index){
         btnClick.addEventListener("click", function(){
             turnCounter++;
