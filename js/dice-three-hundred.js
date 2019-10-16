@@ -1,19 +1,20 @@
 //Get and post player one name
-// function playerOne(playerOneName) {
-//     document.getElementById("player-one").innerHTML = playerOneName;
-// }
-// let firstPlayer = playerOne ( prompt("Please Enter Name of Player One") );
+let firstPlayer = playerOne ( prompt("Please Enter Name of Player One") );
+function playerOne(playerOneName) {
+    document.getElementById("player-one").innerHTML = playerOneName;
+}
 
-// //Get and post player two name
-// function playerTwo(playerTwoName) {
-//     document.getElementById("player-two").innerHTML = playerTwoName;
-// }
-// let secondPlayer = playerTwo ( prompt("Please Enter Name of Player Two") );
+//Get and post player two name
+function playerTwo(playerTwoName) {
+    document.getElementById("player-two").innerHTML = playerTwoName;
+}
+let secondPlayer = playerTwo ( prompt("Please Enter Name of Player Two") );
+
 
 let playerTurn = true;//Keep open so hits work
  
 //-------------ROLL DIE---------------------------------------------
-function rollDie(n){
+function rollDie(n){//n gets replaced in roll functions
     return Math.floor(Math.random() * n);
 }
 
@@ -30,23 +31,11 @@ function trackClicks() {
                 currentPlayer();
             }
             console.log(playerTurn);
+            declareVictor ();
         });
     });
 }
 trackClicks();
-
-//-------------LIMIT DIE ROLLS---------------------------------------------
-// function limiter () {
-//     let turnLimit = 3;
-//     for ( i=0; i < turnLimit; i++ ) {
-//         if (turnCounter <= turnLimit) {
-//             playerTurn = true;
-//         }
-//         else {
-//             playerTurn = false;
-//         }
-//     }
-// }
 
 //-------------FRONT-END CURRENT PLAYER INDICATOR---------------------------------------------
 function currentPlayer () {
@@ -61,7 +50,24 @@ function currentPlayer () {
 }
 currentPlayer();
 
+//-------------WRITE TO MESSAGE BOX RE-USE AS NEEDED---------------------------------------------
+function writeToMessageBox(x) {
+    document.getElementById("shot-message").innerHTML = (x);
+}
+
+//-------------GENERATE CELL HIT RE-USE AS NEEDED---------------------------------------------
+function genCellHit(cell) {
+    document.getElementById(cell).classList.add("green-bg");
+}
+
+//-------------DISABLE BUTTONS AFTER WINNER DECLARED---------------------------------------------
+function disableBtns() {
+    document.getElementsByClassName("btn-success").disabled = true;
+}
+
+
 //-------------BULLSEYE HITS AND POINTS---------------------------------------------
+
 function rollBull(){
     let diceSixSideValues = [25,25,1,4,7,8];
     let randomBull;
@@ -70,10 +76,10 @@ function rollBull(){
     }
     if( randomBull == 25 ) {
         hitBullseye();
-        document.getElementById("shot-message").innerHTML = " Hit!" + randomBull;
+        writeToMessageBox(randomBull + " Hit!");
     }
     else {
-        document.getElementById("shot-message").innerHTML = randomBull + " Missed!";
+        writeToMessageBox(randomBull + " Missed!");
     }
 }
 
@@ -86,14 +92,14 @@ function rollTwenty(){
     }
     if( (randomTwenties == 20) ) {
         hitTwenty();
-        document.getElementById("shot-message").innerHTML = randomTwenties + " Hit!";
+        writeToMessageBox(randomTwenties + " Hit!");
     }
     else if (randomTwenties == 18) {
         hitEighteen();
-        document.getElementById("shot-message").innerHTML = randomTwenties + " Hit!";
+        writeToMessageBox(randomTwenties + " Hit!");
     }
     else {
-        document.getElementById("shot-message").innerHTML = randomTwenties + " Missed!";
+        writeToMessageBox(randomTwenties + " Missed!");
     }
 }
 
@@ -106,14 +112,14 @@ function rollEighteen(){
     }
     if( (randomEighteen == 18) ) {
         hitEighteen();
-        document.getElementById("shot-message").innerHTML = randomEighteen + " Hit!";
+        writeToMessageBox(randomEighteen + " Hit!");
     }
     else if (randomEighteen == 20) {
         hitTwenty();
-        document.getElementById("shot-message").innerHTML = randomEighteen + " Hit!";
+        writeToMessageBox(randomEighteen + " Hit!");
     }
     else {
-        document.getElementById("shot-message").innerHTML = randomEighteen + " Missed!";
+        writeToMessageBox(randomEighteen + " Missed!");
     }
 }
 
@@ -128,14 +134,14 @@ function rollSixteen(){
     }
     if( (randomSixteen == 16) ) {
         hitSixteen();
-        document.getElementById("shot-message").innerHTML = randomSixteen + " Hit!";
+        writeToMessageBox(randomSixteen + " Hit!");
     }
     else if (randomSixteen == 19) {
         hitNineteen();
-        document.getElementById("shot-message").innerHTML = randomSixteen + " Hit!";
+        writeToMessageBox(randomSixteen + " Hit!");
     }
     else {
-        document.getElementById("shot-message").innerHTML = randomSixteen + " Missed!";
+        writeToMessageBox(randomSixteen + " Missed!");
     }
 }
 
@@ -148,14 +154,14 @@ function rollFifteen(){
     }
     if( (randomFifteen == 15) ) {
         hitFifteen();
-        document.getElementById("shot-message").innerHTML = randomFifteen + " Hit!";
+        writeToMessageBox(randomFifteen + " Hit!");
     }
     else if (randomFifteen == 17) {
         hitSeventeen();
-        document.getElementById("shot-message").innerHTML = randomFifteen + " Hit!";
+        writeToMessageBox(randomFifteen + " Hit!");
     }
     else {
-        document.getElementById("shot-message").innerHTML = randomFifteen + " Missed!";
+        writeToMessageBox(randomFifteen + " Missed!");
     }
 }
 
@@ -169,50 +175,54 @@ function rollNineteenSeventeen(){
     //Nineteen Hit
     if( (randomNineteenSeventeen == 19) ) {
         hitNineteen();
-        document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Hit!";
+        writeToMessageBox(randomNineteenSeventeen + " Hit!");
     }
     else if (randomNineteenSeventeen == 17) {
         hitSeventeen();
-        document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Hit!";
+        writeToMessageBox(randomNineteenSeventeen + " Hit!");
     }
     else if (randomNineteenSeventeen == 25) {
         hitBullseye();
-        document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Hit!";
+        writeToMessageBox(randomNineteenSeventeen + " Hit!");
     }
     else {
-        document.getElementById("shot-message").innerHTML = randomNineteenSeventeen + " Missed!";
+        writeToMessageBox(randomNineteenSeventeen + " Missed!");
     }
 }
 
-//LIMIT DART THROWS
-
 //-------------------------BULLSEYE HIT, RE-USE WHEN NEEDED----------------------
 function hitBullseye() {
-    let seventeenFirstHitCheckPlayer1 = document.getElementById("playerOne25-one").classList.contains("green-bg");
-    let seventeenSecondHitCheckPlayer1 = document.getElementById("playerOne25-two").classList.contains("green-bg");
-    let seventeenFirstHitCheckPlayer2 = document.getElementById("playerTwo25-one").classList.contains("green-bg");
-    let seventeenSecondHitCheckPlayer2 = document.getElementById("playerTwo25-two").classList.contains("green-bg");
+    let bullFirstHitCheckPlayer1 = document.getElementById("playerOne25-one").classList.contains("green-bg");
+    let bullSecondHitCheckPlayer1 = document.getElementById("playerOne25-two").classList.contains("green-bg");
+    let bullFirstHitCheckPlayer2 = document.getElementById("playerTwo25-one").classList.contains("green-bg");
+    let bullSecondHitCheckPlayer2 = document.getElementById("playerTwo25-two").classList.contains("green-bg");
     if(playerTurn == true) {
-        if( (seventeenFirstHitCheckPlayer1 == true) && (seventeenSecondHitCheckPlayer1 == true)  ) {
-            document.getElementById("playerOne25-three").classList.add("green-bg");
+        if( (bullFirstHitCheckPlayer1 == true) && (bullSecondHitCheckPlayer1 == true)  ) {
+            genCellHit("playerOne25-three");
+            //document.getElementById().classList.add("green-bg");
         }
-        else if ( seventeenFirstHitCheckPlayer1 == true ) {
-            document.getElementById("playerOne25-two").classList.add("green-bg");
+        else if ( bullFirstHitCheckPlayer1 == true ) {
+            genCellHit("playerOne25-two");
+            //document.getElementById("playerOne25-two").classList.add("green-bg");
         }
-        else if ( seventeenFirstHitCheckPlayer1 == false ) {
-            document.getElementById("playerOne25-one").classList.add("green-bg");
+        else if ( bullFirstHitCheckPlayer1 == false ) {
+            genCellHit("playerOne25-one");
+            //document.getElementById("playerOne25-one").classList.add("green-bg");
         }
     }
     else {
         //Player 2 Hits
-        if ( (seventeenFirstHitCheckPlayer2 == true) && (seventeenSecondHitCheckPlayer2 == true) ) {
-            document.getElementById("playerTwo25-three").classList.add("green-bg");
+        if ( (bullFirstHitCheckPlayer2 == true) && (bullSecondHitCheckPlayer2 == true) ) {
+            genCellHit("playerTwo25-three");
+            //document.getElementById("playerTwo25-three").classList.add("green-bg");
         }
-        else if ( seventeenFirstHitCheckPlayer2 == true ) {
-            document.getElementById("playerTwo25-two").classList.add("green-bg");
+        else if ( bullFirstHitCheckPlayer2 == true ) {
+            genCellHit("playerTwo25-two");
+            //document.getElementById("playerTwo25-two").classList.add("green-bg");
         }
-        else if ( seventeenFirstHitCheckPlayer2 == false ) {
-            document.getElementById("playerTwo25-one").classList.add("green-bg");
+        else if ( bullFirstHitCheckPlayer2 == false ) {
+            genCellHit("playerTwo25-one");
+            //document.getElementById("playerTwo25-one").classList.add("green-bg");
         }
     }
     
@@ -226,25 +236,25 @@ function hitTwenty() {
     let twentySecondHitCheckPlayer2 = document.getElementById("playerTwo20-two").classList.contains("green-bg");
     if(playerTurn == true) {
         if( (twentyFirstHitCheckPlayer1 == true) && (twentySecondHitCheckPlayer1 == true)  ) {
-            document.getElementById("playerOne20-three").classList.add("green-bg");
+            genCellHit("playerOne20-three");
         }
         else if ( twentyFirstHitCheckPlayer1 == true ) {
-            document.getElementById("playerOne20-two").classList.add("green-bg");
+            genCellHit("playerOne20-two");
         }
         else if ( twentyFirstHitCheckPlayer1 == false ) {
-            document.getElementById("playerOne20-one").classList.add("green-bg");
+            genCellHit("playerOne20-one");
         }
     }
     else {
         //Player 2 Hits
         if ( (twentyFirstHitCheckPlayer2 == true) && (twentySecondHitCheckPlayer2 == true) ) {
-            document.getElementById("playerTwo20-three").classList.add("green-bg");
+            genCellHit("playerTwo20-three");
         }
         else if ( twentyFirstHitCheckPlayer2 == true ) {
-            document.getElementById("playerTwo20-two").classList.add("green-bg");
+            genCellHit("playerTwo20-two");
         }
         else if ( twentyFirstHitCheckPlayer2 == false ) {
-            document.getElementById("playerTwo20-one").classList.add("green-bg");
+            genCellHit("playerTwo20-one");
         }
     }
 }
@@ -258,25 +268,25 @@ function hitNineteen() {
     let nineteenSecondHitCheckPlayer2 = document.getElementById("playerTwo19-two").classList.contains("green-bg");
     if(playerTurn == true) {
         if( (nineteenFirstHitCheckPlayer1 == true) && (nineteenSecondHitCheckPlayer1 == true)  ) {
-            document.getElementById("playerOne19-three").classList.add("green-bg");
+            genCellHit("playerOne19-three");
         }
         else if ( nineteenFirstHitCheckPlayer1 == true ) {
-            document.getElementById("playerOne19-two").classList.add("green-bg");
+            genCellHit("playerOne19-two");
         }
         else if ( nineteenFirstHitCheckPlayer1 == false ) {
-            document.getElementById("playerOne19-one").classList.add("green-bg");
+            genCellHit("playerOne19-one");
         }
     }
     else {
         //Player 2 Hits
         if ( (nineteenFirstHitCheckPlayer2 == true) && (nineteenSecondHitCheckPlayer2 == true) ) {
-            document.getElementById("playerTwo19-three").classList.add("green-bg");
+            genCellHit("playerTwo19-three");
         }
         else if ( nineteenFirstHitCheckPlayer2 == true ) {
-            document.getElementById("playerTwo19-two").classList.add("green-bg");
+            genCellHit("playerTwo19-two");
         }
         else if ( nineteenFirstHitCheckPlayer2 == false ) {
-            document.getElementById("playerTwo19-one").classList.add("green-bg");
+            genCellHit("playerTwo19-one");
         }
     }
 }
@@ -289,25 +299,25 @@ function hitEighteen() {
     let eighteenSecondHitCheckPlayer2 = document.getElementById("playerTwo18-two").classList.contains("green-bg");
     if(playerTurn == true) {
         if( (eighteenFirstHitCheckPlayer1 == true) && (eighteenSecondHitCheckPlayer1 == true)  ) {
-            document.getElementById("playerOne18-three").classList.add("green-bg");
+            genCellHit("playerOne18-three");
         }
         else if ( eighteenFirstHitCheckPlayer1 == true ) {
-            document.getElementById("playerOne18-two").classList.add("green-bg");
+            genCellHit("playerOne18-two");
         }
         else if ( eighteenFirstHitCheckPlayer1 == false ) {
-            document.getElementById("playerOne18-one").classList.add("green-bg");
+            genCellHit("playerOne18-one");
         }
     }
     else {
         //Player 2 Hits
         if ( (eighteenFirstHitCheckPlayer2 == true) && (eighteenSecondHitCheckPlayer2 == true) ) {
-            document.getElementById("playerTwo18-three").classList.add("green-bg");
+            genCellHit("playerTwo18-three");
         }
         else if ( eighteenFirstHitCheckPlayer2 == true ) {
-            document.getElementById("playerTwo18-two").classList.add("green-bg");
+            genCellHit("playerTwo18-two");
         }
         else if ( eighteenFirstHitCheckPlayer2 == false ) {
-            document.getElementById("playerTwo18-one").classList.add("green-bg");
+            genCellHit("playerTwo18-one");
         }
     }
 }
@@ -320,25 +330,25 @@ function hitSeventeen() {
     let seventeenSecondHitCheckPlayer2 = document.getElementById("playerTwo17-two").classList.contains("green-bg");
     if(playerTurn == true) {
         if( (seventeenFirstHitCheckPlayer1 == true) && (seventeenSecondHitCheckPlayer1 == true)  ) {
-            document.getElementById("playerOne17-three").classList.add("green-bg");
+            genCellHit("playerOne17-three");
         }
         else if ( seventeenFirstHitCheckPlayer1 == true ) {
-            document.getElementById("playerOne17-two").classList.add("green-bg");
+            genCellHit("playerOne17-two");
         }
         else if ( seventeenFirstHitCheckPlayer1 == false ) {
-            document.getElementById("playerOne17-one").classList.add("green-bg");
+            genCellHit("playerOne17-one");
         }
     }
     else {
         //Player 2 Hits
         if ( (seventeenFirstHitCheckPlayer2 == true) && (seventeenSecondHitCheckPlayer2 == true) ) {
-            document.getElementById("playerTwo17-three").classList.add("green-bg");
+            genCellHit("playerTwo17-three");
         }
         else if ( seventeenFirstHitCheckPlayer2 == true ) {
-            document.getElementById("playerTwo17-two").classList.add("green-bg");
+            genCellHit("playerTwo17-two");
         }
         else if ( seventeenFirstHitCheckPlayer2 == false ) {
-            document.getElementById("playerTwo17-one").classList.add("green-bg");
+            genCellHit("playerTwo17-one");
         }
     }
 }
@@ -351,25 +361,25 @@ function hitSixteen() {
     let sixteenSecondHitCheckPlayer2 = document.getElementById("playerTwo16-two").classList.contains("green-bg");
     if(playerTurn == true) {
         if( (sixteenFirstHitCheckPlayer1 == true) && (sixteenSecondHitCheckPlayer1 == true)  ) {
-            document.getElementById("playerOne16-three").classList.add("green-bg");
+            genCellHit("playerOne16-three");
         }
         else if ( sixteenFirstHitCheckPlayer1 == true ) {
-            document.getElementById("playerOne16-two").classList.add("green-bg");
+            genCellHit("playerOne16-two");
         }
         else if ( sixteenFirstHitCheckPlayer1 == false ) {
-            document.getElementById("playerOne16-one").classList.add("green-bg");
+            genCellHit("playerOne16-one");
         }
     }
     else {
         //Player 2 Hits
         if ( (sixteenFirstHitCheckPlayer2 == true) && (sixteenSecondHitCheckPlayer2 == true) ) {
-            document.getElementById("playerTwo16-three").classList.add("green-bg");
+            genCellHit("playerTwo16-three");
         }
-        else if ( sixteenteenFirstHitCheckPlayer2 == true ) {
-            document.getElementById("playerTwo16-two").classList.add("green-bg");
+        else if ( sixteenFirstHitCheckPlayer2 == true ) {
+            genCellHit("playerTwo16-two");
         }
-        else if ( sixteenteenFirstHitCheckPlayer2 == false ) {
-            document.getElementById("playerTwo16-one").classList.add("green-bg");
+        else if ( sixteenFirstHitCheckPlayer2 == false ) {
+            genCellHit("playerTwo16-one");
         }
     }
 }
@@ -382,25 +392,55 @@ function hitFifteen() {
     let fifteenSecondHitCheckPlayer2 = document.getElementById("playerTwo15-two").classList.contains("green-bg");
     if(playerTurn == true) {
         if( (fifteenFirstHitCheckPlayer1 == true) && (fifteenSecondHitCheckPlayer1 == true)  ) {
-            document.getElementById("playerOne15-three").classList.add("green-bg");
+            genCellHit("playerOne15-three");
         }
         else if ( fifteenFirstHitCheckPlayer1 == true ) {
-            document.getElementById("playerOne15-two").classList.add("green-bg");
+            genCellHit("playerOne15-two");
         }
         else if ( fifteenFirstHitCheckPlayer1 == false ) {
-            document.getElementById("playerOne15-one").classList.add("green-bg");
+            genCellHit("playerOne15-one");
         }
     }
     else {
         //Player 2 Hits
         if ( (fifteenFirstHitCheckPlayer2 == true) && (fifteenSecondHitCheckPlayer2 == true) ) {
-            document.getElementById("playerTwo15-three").classList.add("green-bg");
+            genCellHit("playerTwo15-three");
         }
         else if ( fifteenFirstHitCheckPlayer2 == true ) {
-            document.getElementById("playerTwo15-two").classList.add("green-bg");
+            genCellHit("playerTwo15-two");
         }
         else if ( fifteenFirstHitCheckPlayer2 == false ) {
-            document.getElementById("playerTwo15-one").classList.add("green-bg");
+            genCellHit("playerTwo15-one");
         }
     }
 }
+
+function declareVictor () {
+    //Player One
+    let bullThirdHitCheckPlayer1 = document.getElementById("playerOne25-three").classList.contains("green-bg");
+    let twentyThirdHitCheckPlayer1 = document.getElementById("playerOne20-three").classList.contains("green-bg");
+    let nineteenThirdHitCheckPlayer1 = document.getElementById("playerOne19-three").classList.contains("green-bg");
+    let eighteenThirdHitCheckPlayer1 = document.getElementById("playerOne18-three").classList.contains("green-bg");
+    let seventeenThirdHitCheckPlayer1 = document.getElementById("playerOne17-three").classList.contains("green-bg");
+    let sixteenThirdHitCheckPlayer1 = document.getElementById("playerOne16-three").classList.contains("green-bg");
+    let fifteenThirdHitCheckPlayer1 = document.getElementById("playerOne15-three").classList.contains("green-bg");
+    //Player Two
+    let bullThirdHitCheckPlayer2 = document.getElementById("playerTwo25-three").classList.contains("green-bg");
+    let twentyThirdHitCheckPlayer2 = document.getElementById("playerTwo20-three").classList.contains("green-bg");
+    let nineteenThirdHitCheckPlayer2 = document.getElementById("playerTwo19-three").classList.contains("green-bg");
+    let eighteenThirdHitCheckPlayer2 = document.getElementById("playerTwo18-three").classList.contains("green-bg");
+    let seventeenThirdHitCheckPlayer2 = document.getElementById("playerTwo17-three").classList.contains("green-bg");
+    let sixteenThirdHitCheckPlayer2 = document.getElementById("playerTwo16-three").classList.contains("green-bg");
+    let fifteenThirdHitCheckPlayer2 = document.getElementById("playerTwo15-three").classList.contains("green-bg");
+    if ( (bullThirdHitCheckPlayer1 == true) && (twentyThirdHitCheckPlayer1 == true) && (nineteenThirdHitCheckPlayer1 == true) && (eighteenThirdHitCheckPlayer1 == true) && (seventeenThirdHitCheckPlayer1 == true) && (sixteenThirdHitCheckPlayer1 == true) && (fifteenThirdHitCheckPlayer1 == true)
+    && ( (bullThirdHitCheckPlayer2 == false) || (twentyThirdHitCheckPlayer2 == false) || (nineteenThirdHitCheckPlayer2 == false) || (eighteenThirdHitCheckPlayer2 == false) || (seventeenThirdHitCheckPlayer2 == false) || (sixteenThirdHitCheckPlayer2 == false) || (fifteenThirdHitCheckPlayer2 == false) )) {
+        writeToMessageBox( document.getElementById("player-one").innerHTML + " Wins!" );
+        disableBtns();
+    }
+    else if ( (bullThirdHitCheckPlayer2 == true) && (twentyThirdHitCheckPlayer2 == true) && (nineteenThirdHitCheckPlayer2 == true) && (eighteenThirdHitCheckPlayer2 == true) && (seventeenThirdHitCheckPlayer2 == true) && (sixteenThirdHitCheckPlayer2 == true) && (fifteenThirdHitCheckPlayer2 == true)
+    && ( (bullThirdHitCheckPlayer1 == false) || (twentyThirdHitCheckPlayer1 == false) || (nineteenThirdHitCheckPlayer1 == false) || (eighteenThirdHitCheckPlayer1 == trfalseue) || (seventeenThirdHitCheckPlayer1 == false) || (sixteenThirdHitCheckPlayer1 == false) || (fifteenThirdHitCheckPlayer1 == false) )) {
+        writeToMessageBox( document.getElementById("player-two").innerHTML + " Wins!" );
+        disableBtns();
+    }
+}
+declareVictor();
