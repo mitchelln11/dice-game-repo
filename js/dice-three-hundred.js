@@ -1,53 +1,88 @@
 //Get and post player one name
-// function playerOne(playerOneName) {
-//     document.getElementById("player-one").innerHTML = playerOneName;
-// }
-// let firstPlayer = playerOne ( prompt("Please Enter Name of Player One") );
+function playerOne(playerOneName) {
+    document.getElementById("player-one").innerHTML = playerOneName;
+}
+let firstPlayer = playerOne ( prompt("Please Enter Name of Player One") );
 
 //Get and post player two name
-// function playerTwo(playerTwoName) {
-//     document.getElementById("player-two").innerHTML = playerTwoName;
-// }
-// let secondPlayer = playerTwo ( prompt("Please Enter Name of Player Two") );
+function playerTwo(playerTwoName) {
+    document.getElementById("player-two").innerHTML = playerTwoName;
+}
+let secondPlayer = playerTwo ( prompt("Please Enter Name of Player Two") );
 
-    let playerTurn = true;//Keep open so hits work
-    
+let playerTurn = true;//Keep open so hits work
+ 
+//-------------ROLL DIE---------------------------------------------
+function rollDie(n){
+    return Math.floor(Math.random() * n);
+}
 
-    function trackClicks() {
-        let turnCounter = 0;
-        let turnLimit = 3;
-        let buttonCollect = [].slice.call(document.getElementsByClassName("btn-success"));//Create array of buttons
-        buttonCollect.forEach(function (btnClick, index){
+//-------------TRACK BUTTON CLICKS---------------------------------------------
+function trackClicks() {
+    let turnCounter = 0;
+    let buttonCollect = [].slice.call(document.getElementsByClassName("btn-success"));//Create array of buttons
+    buttonCollect.forEach(function (btnClick, index){
         btnClick.addEventListener("click", function(){
             turnCounter++;
-            console.log(turnCounter);
+            if (turnCounter == 3) {
+                playerTurn = !playerTurn;
+                turnCounter = 0;//reset counter to 0
+            }
+            console.log(playerTurn);
         });
-      });
-    }
+    });
+}
+trackClicks();
 
-    trackClicks();
+//-------------LIMIT DIE ROLLS---------------------------------------------
+function limiter () {
+    let turnLimit = 3;
+    for ( i=0; i < turnLimit; i++ ) {
+        if (turnCounter <= turnLimit) {
+            playerTurn = true;
+        }
+        else {
+            playerTurn = false;
+        }
+    }
+}
+
+//-------------FRONT-END CURRENT PLAYER INDICATOR---------------------------------------------
+function currentPlayer () {
+    if (playerTurn == false) {
+        document.getElementById("player-two-scoreboard").classList.add("green-bg");
+        
+        console.log("hello");
+    }
+    else if (playerTurn == true) {
+        document.getElementById("player-one-scoreboard").classList.add("green-bg");
+        console.log(playerTurn);
+    }
+}
+currentPlayer();
+
 //-------------BULLSEYE HITS AND POINTS---------------------------------------------
 function rollBull(){
     let diceSixSideValues = [25,25,1,4,7,8];
     let randomBull;
     for(let i = 0; i < diceSixSideValues.length; i++){
-        randomBull = diceSixSideValues[Math.floor(Math.random() * diceSixSideValues.length )];
+        randomBull = diceSixSideValues[rollDie(diceSixSideValues.length )];
     }
     if( randomBull == 25 ) {
         hitBullseye();
-        document.getElementById("shot-message").innerHTML = randomBull + " Hit!";
+        document.getElementById("shot-message").innerHTML = " Hit!" + randomBull;
     }
     else {
         document.getElementById("shot-message").innerHTML = randomBull + " Missed!";
     }
 }
 
-//-------------TWENTYIES HITS AND POINTS---------------------------------------------
+//-------------TWENTIES HITS AND POINTS---------------------------------------------
 function rollTwenty(){
     let diceSevenSideValues = [20,20,1,5,18,5,12];
     let randomTwenties;
     for(let i = 0; i < diceSevenSideValues.length; i++){
-        randomTwenties = diceSevenSideValues[Math.floor(Math.random() * diceSevenSideValues.length )];
+        randomTwenties = diceSevenSideValues[rollDie(diceSevenSideValues.length )];
     }
     if( (randomTwenties == 20) ) {
         hitTwenty();
@@ -67,7 +102,7 @@ function rollEighteen(){
     let diceEightSideValues = [18,4,1,20,13,18,6,5];
     let randomEighteen;
     for(let i = 0; i < diceEightSideValues.length; i++){
-        randomEighteen = diceEightSideValues[Math.floor(Math.random() * diceEightSideValues.length )];
+        randomEighteen = diceEightSideValues[rollDie(diceEightSideValues.length )];
     }
     if( (randomEighteen == 18) ) {
         hitEighteen();
@@ -89,7 +124,7 @@ function rollSixteen(){
     let diceNineSideValues = [16,8,11,7,16,19,3,8,16];
     let randomSixteen;
     for(let i = 0; i < diceNineSideValues.length; i++){
-        randomSixteen = diceNineSideValues[Math.floor(Math.random() * diceNineSideValues.length )];
+        randomSixteen = diceNineSideValues[rollDie(diceNineSideValues.length )];
     }
     if( (randomSixteen == 16) ) {
         hitSixteen();
@@ -109,7 +144,7 @@ function rollFifteen(){
     let diceTenSideValues = [15,10,2,6,17,15,15,17,10,2];
     let randomFifteen;
     for(let i = 0; i < diceTenSideValues.length; i++){
-        randomFifteen = diceTenSideValues[Math.floor(Math.random() * diceTenSideValues.length )];
+        randomFifteen = diceTenSideValues[rollDie(diceTenSideValues.length )];
     }
     if( (randomFifteen == 15) ) {
         hitFifteen();
@@ -129,7 +164,7 @@ function rollNineteenSeventeen(){
     let diceElevenSideValues = [19,3,7,19,17,17,7,3,19,17,25];
     let randomNineteenSeventeen;
     for(let i = 0; i < diceElevenSideValues.length; i++){
-        randomNineteenSeventeen = diceElevenSideValues[Math.floor(Math.random() * diceElevenSideValues.length )];
+        randomNineteenSeventeen = diceElevenSideValues[rollDie(diceElevenSideValues.length)];
     }
     //Nineteen Hit
     if( (randomNineteenSeventeen == 19) ) {

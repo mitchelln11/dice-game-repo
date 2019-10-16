@@ -16,17 +16,25 @@ h2 {
     display: flex;
     align-items: stretch;
     justify-content: space-around;
+    background: #D22F29;
 }
 .list-group li {
     flex: 1;
     border:1px solid #000;
     padding:10px;
     text-align:center;
+    color:#E0DFAB;
+}
+
+#shot-message {
+    background: #938275;
+    padding:10px;
+    color: #fff;
 }
 
 .message-container {
     display:flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
 }
 
@@ -37,7 +45,7 @@ h2 {
 }
 
 .scoreboard-container {
-    padding: 15px 15px 25px;
+    padding: 0 15px 25px;
 }
 
 .green-bg {
@@ -60,4 +68,8 @@ h2 {
 .btn-success {
     background: #4A7B42;
     border-color: #17181C;
+}
+
+#player-one-scoreboard, #player-two-scoreboard {
+    padding-bottom: 15px;
 }
